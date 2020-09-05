@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
   && docker-php-ext-configure zip --with-libzip \
   && docker-php-ext-install zip
 
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
 COPY docker/fpm/config/php_dev.ini /usr/local/etc/php/php.ini
 COPY docker/fpm/config/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY docker/fpm/config/www_dev.conf /usr/local/etc/php-fpm.d/www.conf

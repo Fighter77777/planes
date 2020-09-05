@@ -1,0 +1,14 @@
+fos_rest:
+  view:
+    formats:
+      xml:  false
+      json: true
+    view_response_listener: force
+  serializer:
+    serialize_null: true
+  format_listener:
+    rules:
+      - { path: ^/api/v1, priorities: [ json ], fallback_format: json, prefer_extension: true }
+      - { path: ^/, priorities: [ 'html', '*/*'], fallback_format: ~, prefer_extension: true }
+  exception:
+    enabled: true
