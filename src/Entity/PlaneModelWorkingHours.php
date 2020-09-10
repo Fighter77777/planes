@@ -80,6 +80,14 @@ class PlaneModelWorkingHours
     }
 
     /**
+     * @param string|null $name
+     */
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
      * @return string
      */
     public function getStart(): string
@@ -92,7 +100,7 @@ class PlaneModelWorkingHours
      */
     public function setStart($startTime): void
     {
-        $this->start = \DateTimeImmutable("1970-01-01T{$startTime}:00");
+        $this->start = $this->timeToDate($startTime);
     }
 
     /**
@@ -108,7 +116,7 @@ class PlaneModelWorkingHours
      */
     public function setEnd($endTime): void
     {
-        $this->start = \DateTimeImmutable("1970-01-01T{$endTime}:00");
+        $this->end = $this->timeToDate($endTime);
     }
 
     /**
@@ -118,4 +126,28 @@ class PlaneModelWorkingHours
     {
         return $this->planeModel;
     }
+
+    /**
+     * @param PlaneModel|null $planeModel
+     *
+     * @return PlaneModelWorkingHours
+     */
+    public function setPlaneModel(?PlaneModel $planeModel): self
+    {
+        $this->planeModel = $planeModel;
+
+        return $this;
+    }
+
+    /**
+     * @param $time
+     *
+     * @return \DateTimeImmutable
+     */
+    private function timeToDate($time): \DateTimeImmutable
+    {
+        return \DateTimeImmutable::createFromFormat ('H:i', $time);
+    }
+
+
 }

@@ -69,6 +69,14 @@ class Hangar
     }
 
     /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
      * @return Collection|Plane[]
      */
     public function getPlanes(): Collection

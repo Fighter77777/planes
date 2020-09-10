@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\PlaneRepository;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
 
@@ -9,7 +10,7 @@ use JMS\Serializer\Annotation as JMS;
  * Class Plane
  *
  * @ORM\Table(name="planes")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass=PlaneRepository::class)
  */
 class Plane
 {
@@ -72,11 +73,27 @@ class Plane
     }
 
     /**
+     * @param string $tailNumber
+     */
+    public function setTailNumber(string $tailNumber): void
+    {
+        $this->tailNumber = $tailNumber;
+    }
+
+    /**
      * @return PlaneModel|null
      */
     public function getPlaneModel(): ?PlaneModel
     {
         return $this->planeModel;
+    }
+
+    /**
+     * @param PlaneModel $planeModel
+     */
+    public function setPlaneModel(PlaneModel $planeModel): void
+    {
+        $this->planeModel = $planeModel;
     }
 
     /**

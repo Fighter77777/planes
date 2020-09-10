@@ -85,11 +85,42 @@ class PlaneModel
     }
 
     /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
      * @return Collection|PlaneModelWorkingHours[]
      */
     public function getPlaneModelWorkingHours(): Collection
     {
         return $this->planeModelWorkingHours;
+    }
+
+    public function addPlaneModelWorkingHour(PlaneModelWorkingHours $planeModelWorkingHour): self
+    {
+        if (!$this->planeModelWorkingHours->contains($planeModelWorkingHour)) {
+            $this->planeModelWorkingHours[] = $planeModelWorkingHour;
+            $planeModelWorkingHour->setPlaneModel($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlaneModelWorkingHour(PlaneModelWorkingHours $planeModelWorkingHour): self
+    {
+        if ($this->planeModelWorkingHours->contains($planeModelWorkingHour)) {
+            $this->planeModelWorkingHours->removeElement($planeModelWorkingHour);
+            // set the owning side to null (unless already changed)
+            if ($planeModelWorkingHour->getPlaneModel() === $this) {
+                $planeModelWorkingHour->setPlaneModel(null);
+            }
+        }
+
+        return $this;
     }
 
     /**
@@ -100,11 +131,47 @@ class PlaneModel
         return $this->surfaces;
     }
 
+    public function addSurface(Surface $surface): self
+    {
+        if (!$this->surfaces->contains($surface)) {
+            $this->surfaces[] = $surface;
+        }
+
+        return $this;
+    }
+
+    public function removeSurface(Surface $surface): self
+    {
+        if ($this->surfaces->contains($surface)) {
+            $this->surfaces->removeElement($surface);
+        }
+
+        return $this;
+    }
+
     /**
      * @return Collection|Weather[]
      */
     public function getWeathers(): Collection
     {
         return $this->weathers;
+    }
+
+    public function addWeather(Weather $weather): self
+    {
+        if (!$this->weathers->contains($weather)) {
+            $this->weathers[] = $weather;
+        }
+
+        return $this;
+    }
+
+    public function removeWeather(Weather $weather): self
+    {
+        if ($this->weathers->contains($weather)) {
+            $this->weathers->removeElement($weather);
+        }
+
+        return $this;
     }
 }
