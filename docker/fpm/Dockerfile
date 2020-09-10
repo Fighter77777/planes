@@ -1,6 +1,6 @@
 FROM php:7.3-fpm
 
-ARG environment=dev
+ARG environment=prod
 
 RUN if [ $environment != "prod" ]; then pecl install xdebug && docker-php-ext-enable xdebug; fi
 

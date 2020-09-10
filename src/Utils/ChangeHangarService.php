@@ -5,7 +5,7 @@ namespace App\Utils;
 use App\Entity\Hangar;
 use App\Entity\Plane;
 use App\Repository\HangarSaveRepositoryInterface;
-use AppBundle\Exception\ChangeHangarException;
+use App\Exception\ChangeHangarException;
 
 /**
  * Class ChangeHangarService

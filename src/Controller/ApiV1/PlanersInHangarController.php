@@ -5,7 +5,7 @@ namespace App\Controller\ApiV1;
 use App\Entity\Hangar;
 use App\Entity\Plane;
 use App\Utils\ChangeHangarServiceInterface;
-use AppBundle\Exception\ChangeHangarException;
+use App\Exception\ChangeHangarException;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
